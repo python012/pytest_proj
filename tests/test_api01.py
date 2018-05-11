@@ -1,16 +1,14 @@
 import pytest
-
+from conftest import scenario1, scenario2
 
 class TestLogin(object):
+    scenarios = [scenario1, scenario2]
 
-    @pytest.mark.parametrize("test_input,expected", [
-        ("3+5", 8),
-        ("2+4", 6)])
-    def test_login_01(self, test_input, expected):
-        assert eval(test_input) == expected
+    def test_login_01(self, URL):
+        assert "www" in URL
 
-    def test_login_02(self):
+    def test_login_02(self, URL):
         assert "ok" == "ok"
 
-    def test_login_03(self):
-        assert "successful" == "successful"
+    def test_login_03(self, URL):
+        assert "sohu" in URL
